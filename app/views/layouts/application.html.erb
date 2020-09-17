@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instaclone</title>
+    <title>InstaClone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <% if logged_in? %>
+      <header>
+        <div class="header_container">
+          <div class="header_logo">
+            <%= link_to posts_path do %>
+              <%= fa_icon("instagram 2x") %>
+            <% end %>
+          </div>
+          <div class="header_plus">
+            <%= link_to new_post_path do %>
+              <%= fa_icon("plus-square-o 2x") %>
+            <% end %>
+          </div>
+          <div class="header_user">
+            <%= link_to favorite_path(current_user.id) do%>
+              <%= fa_icon("heart-o 2x") %>
+            <% end %>
+            <div class="header_user_icon">
+              <div class="user_icon">
+                <%= link_to user_path(current_user.id)  do %>
+                  <%= image_tag(current_user.icon.url) if current_user.icon && current_user.icon.url %>
+                <% end %>
+              </div>
+            </div>
+            <%= link_to 'ログアウト', session_path(current_user.id), method: :delete %>
+          </div>
+        </div>
+      </header>
+    <% end %>
+    <main>
+      <% flash.each do |key, value| %>
+      <div class="alert alert-danger" role="alert">
+        <%= content_tag(:div, value, class: "#{key}") %>
+      </div>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>

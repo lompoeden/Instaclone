@@ -1,0 +1,21 @@
+<div class="favorite_show">
+  <div class="favorite_show_top">
+    <div class="user_icon">
+      <%= image_tag(current_user.icon.url) if current_user.icon && current_user.icon.url %>
+    </div>
+    <div class="favorite_show_info">
+      <p>name: <%= current_user.name %></p>
+      <p>email: <%= current_user.email %></p>
+    </div>
+  </div>
+
+  <div class="favorite_show_post">
+    <% @favorites.each do |favorite|%>
+    <div class="post_image">
+      <%= link_to post_path(favorite.post.id) do %>
+      <%= image_tag(favorite.post.image.url) if favorite.post.image && favorite.post.image.url %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

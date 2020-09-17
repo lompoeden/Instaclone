@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
-  resources :posts
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  resources :favorites
+  resources :users
+  resources :sions
+  get '/', to: 'users#new'
+    resources :users, only: [:new, :create, :show]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :favorites, only: [:create, :destroy]
+    mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+    resources :posts do
+      collection do
+        post :confirm
+
+      end
+    end
+  end
