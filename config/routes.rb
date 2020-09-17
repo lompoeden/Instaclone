@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :favorites
   resources :users
-  resources :sions
+  resources :sessions
   get '/', to: 'users#new'
     resources :users, only: [:new, :create, :show]
     resources :sessions, only: [:new, :create, :destroy]
