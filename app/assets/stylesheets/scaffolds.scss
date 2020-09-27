@@ -1,12 +1,32 @@
+header {
+  width: 100%;
+  background-color: lightblue;
+  font-style: italic;
+  length: 100%;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  font-stretch: expanded;
+  font-weight: bold;
+  display: flex;
+}
 body {
-  background-color: #fff;
+  background-color: grey;
   color: #333;
-  margin: 33px;
+  margin: 0px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  text-align: center;
 }
-
+footer {
+  width: 100%;
+  background-color: purple;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -20,15 +40,10 @@ pre {
 }
 
 a {
-  color: #000;
-
-  &:visited {
-    color: #666;
-  }
+  color: white;
 
   &:hover {
     color: #fff;
-    background-color: #000;
   }
 }
 
@@ -81,4 +96,10 @@ div {
 
 label {
   display: block;
+}
+.image {
+  display: flex;
+  width: 120px;
+  height: 60px;
+  margin: auto;
 }

@@ -1,21 +1,26 @@
-<div class="favorite_show">
-  <div class="favorite_show_top">
-    <div class="user_icon">
-      <%= image_tag(current_user.icon.url) if current_user.icon && current_user.icon.url %>
-    </div>
-    <div class="favorite_show_info">
-      <p>name: <%= current_user.name %></p>
-      <p>email: <%= current_user.email %></p>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body bgcolor="white"><div style="background-color:red; color:white; padding:10px;"><p align="center"><b><h>INSTAGRAM</h></b></div>
+    <br />
+     <marquee><b>SIGN UP PAGE</b></marquee>
+    <br />
+    <form><p align="left">NAME<br/><input type="text" name="text" placeholder="Name"/></p>
+        <hr color="red"><p align="left">USERNAME<br/><input type="text" name="text" placeholder="Username"/></p>
+        <hr color="red">
+       <p align="left"></p>E-MAIL ID<br/><input type="text" name="text" placeholder="email"/></p>
+       <hr color="red">
+       <p align="left">PASSWORD<br/><input type="password" name="password" placeholder="Password" required/></p>
+       <marquee><b>MINIMUM 6 DIGITS</b></marquee><hr color="red">
+       <p align="left">VERIFICATION<br><input type="password" name="password" placeholder="Password" required/></p>
+       <marquee><b> TYPE YOUR PASSWORD AGAIN</b></marquee>
+       <hr color="red">
+       <button style="color:red; border-radius:10px;">SIGN UP</button>
 
-  <div class="favorite_show_post">
-    <% @favorites.each do |favorite|%>
-    <div class="post_image">
-      <%= link_to post_path(favorite.post.id) do %>
-      <%= image_tag(favorite.post.image.url) if favorite.post.image && favorite.post.image.url %>
-      <% end %>
-    </div>
-    <% end %>
-  </div>
-</div>
+    </form>
+
+
+    </body>
+</html>

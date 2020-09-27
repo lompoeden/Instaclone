@@ -1,0 +1,17 @@
+<div class="user_index">
+  <div class="user_index_top">
+    <h1>ユーザ一覧</h1>
+  </div>
+  <% @users.each do |user| %>
+  <ul>
+    <li>
+        <div class="user_icon">
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag(user.icon.url) if user.icon && user.icon.url %>
+          <%= link_to "#{user.name}", user_path(user.id) %>
+          <% end %>
+        </div>
+    </li>
+  </ul>
+  <% end %>
+</div>
