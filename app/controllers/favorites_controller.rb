@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
+    post_id = current_user.favorites.find_by(id: params[:id]).post_id
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
     redirect_to posts_url, notice: "#you have deleted like for {favorite.post.user.name}'s post"
   end

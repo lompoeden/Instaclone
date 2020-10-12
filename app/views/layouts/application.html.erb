@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instaclone</title>
+    <title>Cloneinsta</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,26 +11,30 @@
   </head>
 
   <body>
-    <div class="text-center">
-    <header>
-      <%= link_to posts_path do %> Instaeden
+    <header class="header_container">
+      
+
+      <div class="logo">
+      </div>
+        <% if logged_in? %>
+          <ul>
+            <li><button type="button" class="btn btn-default"><%= link_to "My profile", user_path(current_user.id) %></li>
+            <li><button type="button" class="btn btn-primary"><%= link_to "New Post", new_post_path %></li>
+            <li><button type="button" class="btn btn-default"><%= link_to "Favorite", favourite_user_path(current_user.id) %></li>
+            <li><button type="button" class="btn btn-danger"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+          </ul>
+          <% else %>
+          <ul>
+            <li><button type="button" class="btn btn-default"><%= link_to "Login", new_session_path %></li>
+            <li><button type="button" class="btn btn-primary"><%= link_to "Join", new_user_path %></li>
+          </ul>
       <% end %>
-          <% if logged_in? %>
-        <button type="button" class="btn btn-default"><%= link_to "Profile", user_path(current_user.id) %>
-        <button type="button" class="btn btn-default"><%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <% else %>
-        <button type="button" class="btn btn-default"><%= link_to "Sign up", new_user_path %>
-        <button type="button" class="btn btn-default"><%= link_to "Login", new_session_path %>
-      <% end %>
-      </header>
-      <% if current_user.present? %>
-      <button type="button" class="btn btn-default"><%= link_to "My profile", icon_users_path %>
-      <button type="button" class="btn btn-default"><%= link_to "Favorite", favorite_path(current_user.id) %>
-      <% end %>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-    <%= yield %>
+    </header>
+    <% flash.each do |key, value| %>
+    <div class="alert alert-danger" role="alert">
+      <%= content_tag(:div, value, class: "#{key}") %>
     </div>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

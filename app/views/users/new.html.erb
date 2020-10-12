@@ -1,28 +1,47 @@
-<h1>Sign up</h1>
 <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+  <div class="alert alert-danger" role="alert">
     <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+      <% @user.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+        <% end %>
     </ul>
   </div>
 <% end %>
-<div class="link">
+<br>
 
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %><br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
-  <br>
-    <%= f.submit "Signup"  %>
+<div class="row">
+  <div class="col-xs-4 col-xs-push-4 form">
+    <h1>Sign up for Instagramc</h1>
+    <p>Check out your friend's Pictures</p>
+    <%= form_with(model: @user, local: true) do |form|%>
+      <p><%= form.text_field :name, placeholder: 'name', class: "log-in-tag" %></p>
+      <br>
+      <p><%= form.email_field :email, placeholder: 'email', class: "log-in-tag" %></p>
+      <br>
+      <p><%= form.password_field :password, placeholder: 'password', class: "log-in-tag" %></p>
+      <br>
+      <p><%= form.password_field :password_confirmation, placeholder: 'password_confirmation', class: "log-in-tag" %></p>
+      <br>
+      <p><%= form.file_field :icon, placeholder: 'icon', class: "log-in-tag" %></p>
+      <br>
+      <div class="row">
+        <div class="col-xs-12 form-btn">
+          <%= form.submit "Create my account" %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to 'Back', root_path %>
+    <hr>
+    <p>Already have an account？？<%= link_to 'Login', new_session_path %></p>
   </div>
 
-<% end %>
+  <div class="row">
+    <div class="col-xs-12 space">
+    </div>
+    <div class="col-xs-12 space">
+    </div>
+    <div class="col-xs-12 space">
+    </div>
+    <div class="col-xs-12 space">
+    </div>
+  </div>

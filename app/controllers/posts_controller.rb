@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :logged_in?
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: "DESC")
   end
 
   def show
@@ -22,22 +22,20 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
-  def create
-    @post = current_user.posts.build(post_params)
-
-    respond_to do |format|
-      if @post.save
-        PostMailer.post_mail(@post).deliver
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+ def create
+   @post = current_user.posts.build(post_params)
+   if params[:back]
+     render :new
+   else
+     @post.save
+     ContactMailer.contact_mail(@post).deliver
+     flash[:notice] = 'post successfully created'
+     redirect_to posts_path
+   end
+ end
 
   def update
     respond_to do |format|
@@ -51,12 +49,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def confirm
-    @post = current_user.posts.build(post_params)
-    @post.id = params[:id]
-    render :new if @post.invalid?
-  end
-
   def destroy
     @post.destroy
     respond_to do |format|
@@ -65,12 +57,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def confirm
+    @post = current_user.posts.build(post_params)
+    render :new if @post.invalid?
+  end
+
   private
   def set_post
     @post = Post.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:posts, :id, :image, :image_cache, :user_id, :name, :email)
+    params.require(:post).permit(:name, :email, :post, :id, :image, :image_cache, :user_id)
   end
 end

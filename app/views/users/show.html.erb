@@ -1,25 +1,41 @@
-<div class="user_show">
-  <div class="user_show_top">
-    <div class="user_icon">
-      <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
+<div class="row">
+  <div class="col-xs-8 col-xs-push-2">
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row about">
+    <div class="col-xs-2 col-xs-push-2 img">
+      <%= image_tag @user.icon.url(), class: 'img-responsive img-circle'%>
     </div>
-    <div class="user_show_info">
-      <p>name: <%= @user.name %></p>
-      <p>email: <%= @user.email %></p>
-      <% if @user.id == current_user.id %>
-        <%= link_to '編集', edit_user_path(@user.id) %>
-        <%= link_to '削除', user_path(@user.id), data: {confirm: '本当に削除していいですか？'}, method: :delete %>
-      <% end %>
+    <div class="col-xs-6 col-xs-push-2">
+      <div class="row">
+        <div class="col-xs-12 about">
+          <p>
+            <span style="font-size:36px">
+              <%= @user.name %><br>
+            </span>
+            <strong>Email:</strong>
+              <%= @user.email %>
+          </p>
+
+          <% if logged_in? %>
+            <div class="row">
+              <% if @user == current_user %>
+                <%= link_to 'New Post', new_post_path %> |
+                <%= link_to 'Edit Info', edit_user_path(@user) %> |
+                <%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="user_show_post">
-    <% @user.posts.each do |post|%>
-      <div class="post_image">
-        <%= link_to post_path(post.id) do %>
-          <%= image_tag(post.image.url) if post.image && post.image.url %>
-        <% end %>
-      </div>
-    <% end %>
+<div class="row">
+  <div class="col-xs-12 space">
   </div>
 </div>

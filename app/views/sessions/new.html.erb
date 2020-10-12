@@ -1,8 +1,32 @@
-<h1>Log in</h1>
- <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
- <%= f.label :email %>
- <%= f.email_field :email %>
- <%= f.label :password %>
- <%= f.password_field :password %>
- <%= f.submit "Log in" %>
- <% end %>
+<div class="row">
+  <div class="col-xs-4 col-xs-push-4 form">
+
+    <h1>Instaclone Login</h1>
+    <%= form_with(scope: :session, url: sessions_path, local: true) do |form|%>
+      <p><%= form.email_field :email, placeholder: 'email', class: "log-in-tag" %></p>
+      <br>
+      <p><%= form.password_field :password, placeholder: 'password', class: "log-in-tag" %></p>
+      <br>
+      <div class="row">
+        <div class="col-xs-12 form-btn">
+        <%= form.submit "Login" %>
+        </div>
+      </div>
+    <% end %>
+
+    <hr>
+
+    <p>Just arrived to Instgramc？<%= link_to 'Create an account', new_user_path %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 space">
+  </div>
+  <div class="col-xs-12 space">
+  </div>
+  <div class="col-xs-12 space">
+  </div>
+  <div class="col-xs-12 space">
+  </div>
+</div>

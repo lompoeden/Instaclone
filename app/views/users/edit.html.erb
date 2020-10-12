@@ -1,23 +1,30 @@
 <% if @user.errors.any? %>
   <% @user.errors.full_messages.each do |message|%>
-  <ul>
-    <div class="alert alert-danger" role="alert">
-      <li><%= message %></li>
-    </div>
-  </ul>
+  <div class="alert alert-danger" role="alert">
+    <%= message %>
+  </div>
   <% end %>
 <% end %>
 
-<h1>ユーザ情報編集</h1>
-<%= form_with(model:@user, local:true) do |form| %>
-  <div class="user_icon">
-    <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
-  </div>
-  <%= form.file_field :icon %>
+<%= form_with(model: @user, local: true) do |form| %>
+<div class="user_icon">
+  <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
+</div>
+<div class="setup_form_icon">
+  <p><%= form.label :icon %><%= form.file_field :icon %></p>
   <%= form.hidden_field :icon_cache %>
-  <%= form.email_field :email, placeholder: 'メールアドレス' %>
-  <%= form.text_field :name, placeholder: 'ユーザーネーム' %>
-  <%= form.password_field :password, placeholder: 'パスワード' %>
-  <%= form.password_field :password_confirmation, placeholder: 'パスワード（確認用）' %>
-  <%= form.submit '登録する' %>
-<% end %>
+</div>
+<p><%= form.text_field :name, placeholder: 'name' %></p>
+<p><%= form.email_field :email, placeholder: 'email' %></p>
+<p><%= form.password_field :password, placeholder: 'password' %></p>
+<p><%= form.password_field :password_confirmation, placeholder: 'password_confirmation' %></p>
+<div class="setup_form_button">
+  <%= form.submit "Update my account" %>
+</div>
+<%  end %>
+<div class = "setup_form setup_form_to_login">
+<p>
+  <%= link_to "@#{current_user.name}", @user %> |
+  <%= link_to 'Back', users_path %>
+</p>
+</div>

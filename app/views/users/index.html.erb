@@ -1,17 +1,35 @@
-<div class="user_index">
-  <div class="user_index_top">
-    <h1>ユーザ一覧</h1>
-  </div>
-  <% @users.each do |user| %>
-  <ul>
-    <li>
-        <div class="user_icon">
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag(user.icon.url) if user.icon && user.icon.url %>
-          <%= link_to "#{user.name}", user_path(user.id) %>
-          <% end %>
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-4 col-xs-push-4 post">
+    <h1>List of Users</h1>
+
+  <div class="row list_wrapper">
+    <% @users.each do |user| %>
+      <div class="row list-head">
+        <div class="col-xs-2 thumb-img list">
+          <%= image_tag user.icon.url(:thumb), class: 'img-responsive img-circle' %>
         </div>
-    </li>
-  </ul>
-  <% end %>
+        <div class="col-xs-10 user-info">
+          <h3>
+            <small><strong> <%= link_to "#{user.id}", user_path(user.id) %> </strong></small>
+          </h3>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-xs-12 link">
+        <%= link_to posts_path %><h3>Return to Home</h3>
+      </div>
+    </div>
+
+  </div>
+ </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 space">
+  </div>
+  <div class="col-xs-12 space">
+  </div>
 </div>

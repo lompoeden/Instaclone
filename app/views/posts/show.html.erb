@@ -1,15 +1,26 @@
 <p id="notice"><%= notice %></p>
-
-<p>Posts:<%= @post.image %>
+<p><%= @post.user.name %>
+  <%= link_to user_path(@post.user.id)  do %>
+    <%= image_tag(@post.user.icon.url) if @post.user.icon && @post.user.icon.url %>
+  <% end %>
 </p>
+<p><strong>Image:</strong>
+  <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+</p>
+
+<p><%= @post.posts %></p>
 
 <% unless @post.user_id == current_user.id %>
   <% if @favorite.present? %>
-    <%= link_to 'cancel favorite', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+    <button type="button" class="btn btn-danger"><%= link_to 'Unfavorite', favorite_path(id: @favorite.id), method: :delete %>
   <% else %>
-    <%= link_to 'favorite', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+    <button type="button" class="btn btn-primary"><%= link_to 'Favorite', favorites_path(post_id: @post.id), method: :post %>
   <% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<% if @post.user_id == current_user.id %>
+  <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_post_path(@post) %>
+  <button type="button" class="btn btn-danger"><%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<button type="button" class="btn btn-default"><%= link_to 'Back', posts_path %>
