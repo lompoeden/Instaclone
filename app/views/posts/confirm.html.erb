@@ -1,6 +1,6 @@
+<h1>confirmation screen</h1>
 <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
   <%= form.hidden_field :posts %>
-  <p><%= @post.posts %></p>
   <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit "Share" %>
@@ -9,5 +9,6 @@
 <%= form_with(model: @post, url: new_post_path, local: true, method: 'get') do |form| %>
   <%= form.hidden_field :posts %>
   <%= form.hidden_field :image_cache %>
+   <%= form.hidden_field :current_user %>
   <%= form.submit "back", name:'back' %>
 <% end %>
