@@ -38,6 +38,11 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def favourite
+      @user = User.find(params[:id])
+      @favorites = current_user.favorite_posts.all
+    end
 
   def destroy
     User.find(params[:id]).destroy
