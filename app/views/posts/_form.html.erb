@@ -22,7 +22,6 @@
     <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
-    <%= form.hidden_field :user_id,value: current_user.id %>
   </div>
   <div class="field">
       <% post.user_id %>

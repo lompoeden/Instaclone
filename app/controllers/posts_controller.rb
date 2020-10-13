@@ -3,10 +3,9 @@ class PostsController < ApplicationController
   before_action :current_user
   before_action :authenticate_user
   before_action :logged_in?
-  before_action :check_user, only: [:edit,:update,:destroy]
 
   def index
-    @posts = Post.all.order(created_at: "DESC")
+    @posts = Post.all
   end
 
   def show
@@ -31,8 +30,8 @@ class PostsController < ApplicationController
    if params[:back]
      render :new
    else
-     @post.save
-     PostMailer.post_mail(@post).deliver
+     #@post.save
+     #PostMailer.post_mail(@post).deliver
      flash[:notice] = 'post successfully created'
      redirect_to posts_path
    end
@@ -59,9 +58,8 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    @post =current_user.posts.build(post_params)
-       @post.id = params[:id]
-       @post.user.name = current_user.id
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
  end
 
 
