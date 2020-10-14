@@ -4,7 +4,7 @@
     <h1> Users List</h1>
 
   <div class="row list_wrapper">
-    <% @users.each do |user| %>
+    <% @users.each do |post| %>
       <div class="row list-head">
         <div class="col-xs-2 thumb-img list">
           <%= image_tag user.icon.url(:thumb), class: 'img-responsive img-circle' %>
