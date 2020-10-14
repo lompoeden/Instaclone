@@ -62,7 +62,6 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
  end
 
-
   private
   def set_post
     @post = Post.find(params[:id])
