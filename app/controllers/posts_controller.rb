@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
@@ -68,6 +67,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :email, :post, :id, :image, :image_cache, :user_id)
+    params.require(:post).permit(:name, :email, :posts, :id, :image, :image_cache, :user_id)
   end
 end
