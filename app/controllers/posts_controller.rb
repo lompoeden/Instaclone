@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   end
 
  def create
-   @post = current_user.posts.build(post_params)
+   @post = current_user.post.build(post_params)
    if params[:back]
      render :new
    else
@@ -67,6 +67,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :email, :posts, :id, :image, :image_cache, :user_id)
+    params.require(:post).permit(:name, :email, :post, :id, :image, :image_cache, :user_id)
   end
 end

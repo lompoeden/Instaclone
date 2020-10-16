@@ -2,7 +2,7 @@
 
 <%= link_to 'New Post', new_post_path %>
 
-<% @posts.each do |user| %>
+<% @posts.each do |post| %>
 <article class="post">
   <strong><%= post.user.name %></strong>
 <% if logged_in? %>

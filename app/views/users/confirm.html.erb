@@ -1,6 +1,6 @@
 <h1>confirmation</h1>
 <%= form_with(model: @user, url: confirm_new_or_edit, local: true) do |form| %>
-  <%= form.hidden_field :posts %>
+  <%= form.hidden_field :post %>
   <%= form.hidden_field :title %>
   <p>NAME：<%= @user.neme %></p>
   <%= form.hidden_field :content %>
