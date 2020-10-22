@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_213937) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text "posts"
+    t.text "post"
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
