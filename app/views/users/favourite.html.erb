@@ -1,22 +1,16 @@
-<h1><%= @user.name %>favorites list</h1>
-  <div class="link">
-    <%= image_tag "#{@user.user_image}", size: '200x200'%>
-  </div>
-    <% @favorites.each do |favorite| %>
-    <div class="post">
-      <% picture = Picture.find_by(id: favorite.picture_id) %>
-      <%= image_tag picture.user.user_image.url, size: '50x50' %>
-      <%= picture.user.name %>
-      <br>
-      <%= favorite.picture.title %>
-      <br>
-      <%= image_tag picture.image.url, size: '614x985' %>
-      <br>
-      <%= favorite.picture.content %>
-      </div>
-      <br>
+<h1><%= @user.name %></h1>
+<%= image_tag "#{@user.icon}" %>
+<table>
+  <tbody>
+    <% @favorites.each do |post| %>
+      <tr>
+        <td><%= post.user.name %></td>
+        <td><%= image_tag(post.image.url) %></td>
+        <td><%= post.posts %></td>
+        <td><%= link_to 'Show', @post %></td>
+      </tr>
     <% end %>
-    <br>
-    <div class="link">
-      <%= link_to 'to the post list', pictures_path %>
-    </div>
+  </tbody>
+</table>
+
+<%= link_to 'Home', posts_path %>
