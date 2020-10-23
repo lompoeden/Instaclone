@@ -1,102 +1,26 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>500 Internal Server Error</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <style>
-      @media screen and (min-width: 576px){
-        body {
-          min-height: 100vh;
-          margin: auto;
-          background-color: #072F41;
-        }
-        .hr {
-          margin: 0;
-        }
-        .pt {
-          margin-top: 5%;
-        }
-        .wrapper {
-          width: 60%;
-          margin: auto;
-          display: table;
-        }
-        .inner_left {
-          width: 40%;
-          display: table-cell;
-        }
-        .inner_right {
-          width: 60%;
-          display: table-cell;
-          vertical-align: middle;
-        }
-        .btn {
-          margin-top: 5%;
-          text-align: center;
-        }
-      }
-
-      @media only screen and (max-width: 576px){
-        body {
-          padding: 5%;
-          margin: auto;
-          background-color: #072F41;
-        }
-        .hr {
-          display: none;
-        }
-        .btn {
-          margin-top: 30px;
-        }
-      }
-
-      @font-face {
-        font-family: 'Geo';
-        src: url('/geo.ttf') format('truetype');
-      }
-      .inner_right{
-        color: #f8f9fa;
-        }
-      .image {
-        width: 100%;
-      }
-      p {
-        font-family: 'Geo';
-        font-size: larger;
-      }
-      a {
-        padding: 0.375rem 0.75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        border: 1px solid #f8f9fa;
-        border-radius: 0.25rem;
-        text-decoration: none;
-        color: #f8f9fa;
-        cursor: pointer;
-        transition: color 0.15s ease-in-out,
-                    background-color 0.15s ease-in-out,
-                    border-color 0.15s ease-in-out,
-                    box-shadow 0.15s ease-in-out;
-      }
-      a:hover {
-        color: #212529;
-        background-color: #f8f9fa;
-      }
-    </style>
-  </head>
-  <body>
-    <hr class='hr pt'>
-    <div class='wrapper'>
-      <div class='inner_left'>
-        <img src='/500.png' class='image'>
-      </div>
-      <div class='inner_right'>
-        <p>申し訳ございません。ページを表示することができません。</p>
-        <p>サーバーがメンテナンス中であるか、不具合が発生している可能性があります。</p>
-      </div>
-    </div>
-    <hr class='hr'>
-    <div class='btn'>
-      <a rel='nofollow' href='/users/personal'>HOME</a>
-    </div>
-  </body>
-</html>
+<head>
+  <title>Internal Server Error (500)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+  .error {
+    padding-top: 16%
+  }
+  p{
+    text-align: center;
+  }
+  img{
+    display: block;
+    margin: 0 auto;
+  }
+  </style>
+</head>
+<body>
+  <!-- This file lives in public/500.html -->
+  <div class="error">
+    <img src="/500.png">
+    <p>Internal Server Error</p>
+  </div>
+</body>
+</html
