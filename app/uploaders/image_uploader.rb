@@ -47,4 +47,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
    #process resize_to_fill: [450, 450, "Center"]
- #end
+ end
