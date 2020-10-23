@@ -8,7 +8,7 @@
   <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
 </p>
 
-<p><%= @post.posts %></p>
+<p><%= @post.post %></p>
 
 <% unless @post.user_id == current_user.id %>
   <% if @favorite.present? %>
