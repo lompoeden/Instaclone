@@ -25,8 +25,8 @@
           </ul>
           <% else %>
           <ul>
-            <%= link_to image_tag("https://img.icons8.com/ios-filled/50/000000/sign-in-form-password.png"), new_session_path %>
-            <%= link_to image_tag("https://img.icons8.com/color/48/000000/group.png"), new_user_path %>
+            <li><button type="button" class="btn btn-default"><%= link_to "Login", new_session_path %></li>
+            <li><button type="button" class="btn btn-primary"><%= link_to "Join", new_user_path %></li>
           </ul>
       <% end %>
     </header>

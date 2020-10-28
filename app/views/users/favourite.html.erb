@@ -6,11 +6,11 @@
       <tr>
         <td><%= post.user.name %></td>
         <td><%= image_tag(post.image.url) %></td>
-        <td><%= post.posts %></td>
+        <td><%= post.post %></td>
         <td><%= link_to 'Show', @post %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to image_tag("https://img.icons8.com/cute-clipart/64/000000/instagram-new.png"), posts_path %>
+<%= link_to 'Home', posts_path %>
