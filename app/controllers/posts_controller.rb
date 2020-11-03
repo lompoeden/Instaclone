@@ -30,7 +30,7 @@ class PostsController < ApplicationController
       render :new
     else
       @post.save
-      #PostMailer.post_mail(@post).deliver
+      PostMailer.post_mail(@post).deliver
       flash[:notice] = 'post created'
       redirect_to posts_path
     end
