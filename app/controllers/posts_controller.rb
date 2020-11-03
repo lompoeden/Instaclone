@@ -25,19 +25,16 @@ class PostsController < ApplicationController
   end
 
   def create
-     @post = Post.new(post_params)
-     @post.user_id = current_user.id
-     respond_to do |format|
-       if @post.save
-         #ContactMailer.contact_mail(@post).deliver
-         format.html { redirect_to @post }
-         format.json { render :show, status: :created, location: @post }
-       else
-         format.html { render :new }
-         format.json { render json: @post.errors, status: :unprocessable_entity }
-       end
-     end
-   end
+    @post = current_user.post.build(post_params)
+    if params[:back]
+      render :new
+    else
+      @post.save
+      #PostMailer.post_mail(@post).deliver
+      flash[:notice] = 'post created'
+      redirect_to posts_path
+    end
+  end
 
   def update
     respond_to do |format|
